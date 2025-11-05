@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Collection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <section>
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+     <header>
+      <!--nav-->
+      <nav x-data="{ isOpen: false }" class="relative bg-white shadow dark:bg-gray-800">
+        <div class="container px-6 py-4 mx-auto flex items-center justify-between">
+          <!-- Logo -->
+          <a href="/" class="flex-shrink-0">
+            <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="Logo">
+          </a>
+
+          <!-- Desktop Menu (centered) -->
+          <div class="hidden md:flex flex-1 justify-center">
+            <div class="flex space-x-6">
+              <a class="text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="/">Home</a>
+              <a class="text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="/product/product.html">Shop</a>
+              <a class="text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">Contact</a>
+              <a class="text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">About</a>
+            </div>
+          </div>
+
+          <!-- Cart Icon (right) -->
+          <div class="hidden md:flex items-center">
+            <a href="#" class="relative text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
+            </a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="flex lg:hidden">
+            <button @click="isOpen = !isOpen" :aria-expanded="isOpen.toString()" aria-controls="mobile-menu" type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none">
+              <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+              </svg>
+              <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" x-cloak x-show="isOpen" class="md:hidden absolute inset-x-0 z-20 w-full px-6 py-4 bg-white dark:bg-gray-800 shadow">
+          <div class="flex flex-col space-y-2">
+            <a class="py-2 text-gray-700 transition-colors duration-200 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">Home</a>
+            <a class="py-2 text-gray-700 transition-colors duration-200 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">Shop</a>
+            <a class="py-2 text-gray-700 transition-colors duration-200 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">Contact</a>
+            <a class="py-2 text-gray-700 transition-colors duration-200 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">About</a>
+            <a class="py-2 flex items-center justify-start text-gray-700 transition-colors duration-200 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" href="#">
+              <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Cart
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+      <div class="mt-8 block lg:hidden">
+        <button class="flex items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+          <span class="text-sm font-medium"> Filters &amp; Sorting </span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 rtl:rotate-180">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="mt-4 lg:mt-8 lg:grid lg:grid-cols-4 lg:items-start lg:gap-8">
+        <!-- 🔹 Sidebar Filters -->
+        <div class="hidden space-y-4 lg:block">
+          <!-- Sort -->
+          <div>
+            <label for="SortBy" class="block text-xs font-medium text-gray-700"> Sort By </label>
+            <select id="SortBy" class="mt-1 rounded-sm border-gray-300 text-sm w-full">
+              <option>Sort By</option>
+              <option value="title, ASC">Title, ASC</option>
+              <option value="title, DESC">Title, DESC</option>
+              <option value="price, ASC">Price, ASC</option>
+              <option value="price, DESC">Price, DESC</option>
+            </select>
+          </div>
+
+          <!-- Filters -->
+          <div>
+            <p class="block text-xs font-medium text-gray-700">Filters</p>
+            <div class="mt-1 space-y-2">
+
+              <!-- Category -->
+              <details class="overflow-hidden rounded-sm border border-gray-300 [&_summary::-webkit-details-marker]:hidden" open>
+                <summary class="flex cursor-pointer items-center justify-between gap-2 p-4 text-gray-900 transition">
+                  <span class="text-sm font-medium"> Category </span>
+                  <span class="transition group-open:-rotate-180">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+                    </svg>
+                  </span>
+                </summary>
+                <div class="border-t border-gray-200 bg-white">
+                  <ul id="categories-list" class="space-y-1 border-t border-gray-200 p-4"></ul>
+                </div>
+              </details>
+
+              <!-- Price -->
+              <details class="overflow-hidden rounded-sm border border-gray-300 [&_summary::-webkit-details-marker]:hidden" open>
+                <summary class="flex cursor-pointer items-center justify-between gap-2 p-4 text-gray-900 transition">
+                  <span class="text-sm font-medium"> Price </span>
+                  <span class="transition group-open:-rotate-180">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+                    </svg>
+                  </span>
+                </summary>
+                <div class="border-t border-gray-200 bg-white p-4">
+                  <div class="flex justify-between gap-4">
+                    <label class="flex items-center gap-2">
+                      <span class="text-sm text-gray-600">$</span>
+                      <input type="number" id="price-from" placeholder="From" class="w-full rounded-md border-gray-200 shadow-xs sm:text-sm">
+                    </label>
+                    <label class="flex items-center gap-2">
+                      <span class="text-sm text-gray-600">$</span>
+                      <input type="number" id="price-to" placeholder="To" class="w-full rounded-md border-gray-200 shadow-xs sm:text-sm">
+                    </label>
+                  </div>
+                </div>
+              </details>
+
+              <!-- Ratings -->
+              <details class="overflow-hidden rounded-sm border border-gray-300 [&_summary::-webkit-details-marker]:hidden" open>
+                <summary class="flex cursor-pointer items-center justify-between gap-2 p-4 text-gray-900 transition">
+                  <span class="text-sm font-medium"> Ratings </span>
+                  <span class="transition group-open:-rotate-180">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+                    </svg>
+                  </span>
+                </summary>
+                <div class="border-t border-gray-200 bg-white p-4">
+                  <ul class="space-y-2">
+                    <li><label><input type="radio" name="rating" id="rating-1" value="1"> 1 & up</label></li>
+                    <li><label><input type="radio" name="rating" id="rating-2" value="2"> 2 & up</label></li>
+                    <li><label><input type="radio" name="rating" id="rating-3" value="3"> 3 & up</label></li>
+                    <li><label><input type="radio" name="rating" id="rating-4" value="4"> 4 & up</label></li>
+                    <li><label><input type="radio" name="rating" id="rating-5" value="5"> 5 only</label></li>
+                  </ul>
+                </div>
+              </details>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- 🔹 Products -->
+        <div class="lg:col-span-3">
+          <ul id="card-list" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <footer class="text-[#]">
+    <!-- Main footer -->
+    <div class="pt-16 pb-12 text-sm border-t border-slate-200 bg-slate-100">
+        <div class="container px-6 mx-auto">
+        <div class="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
+            <div class="col-span-4 md:col-span-8 lg:col-span-4" aria-labelledby="footer-header">
+            <a id="WindUI-5-logo" aria-label="WindUI logo" aria-current="page" class="flex items-center gap-2 mb-6 text-base font-medium leading-6 whitespace-nowrap text-slate-700 focus:outline-none" href="javascript:void(0)">
+               <img src="https://merakiui.com/images/full-logo.svg" alt="logo" width="100px">
+            </a>
+            <p>Expertly made, responsive, accessible components in React and HTML ready to be used on your website or app. Just copy and paste them on your Tailwind CSS project.</p>
+            </div>
+            <nav class="col-span-2 md:col-span-4 lg:col-span-2" aria-labelledby="footer-product-5-logo">
+            <h3 class="mb-6 text-base font-medium text-slate-700" id="footer-product-5-logo">Product</h3>
+            <ul>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Features </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Customers </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Why us? </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Pricing </a>
+                </li>
+            </ul>
+            </nav>
+            <nav class="col-span-2 md:col-span-4 lg:col-span-2" aria-labelledby="footer-docs-5-logo">
+            <h3 class="mb-6 text-base font-medium text-slate-700" id="footer-docs-5-logo">Docs & Help</h3>
+            <ul>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Documentation</a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Training </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> System status </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> FAQ's </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Help Center </a>
+                </li>
+            </ul>
+            </nav>
+            <nav class="col-span-2 md:col-span-4 lg:col-span-2" aria-labelledby="footer-about-5-logo">
+            <h3 class="mb-6 text-base font-medium text-slate-700" id="footer-about-5-logo">About us</h3>
+            <ul>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> About us </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Careers </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Leadership </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Blog</a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Events </a>
+                </li>
+            </ul>
+            </nav>
+            <nav class="col-span-2 md:col-span-4 lg:col-span-2" aria-labelledby="footer-get-in-touch-5-logo">
+            <h3 class="mb-6 text-base font-medium text-slate-700" id="footer-get-in-touch-5-logo">Get in touch</h3>
+            <ul>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Contact </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Support </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Partners </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Join research </a>
+                </li>
+            </ul>
+            </nav>
+        </div>
+        </div>
+    </div>
+    <!-- Sub Footer -->
+    <div class="py-4 text-sm border-t border-slate-200 bg-slate-100">
+        <div class="container px-6 mx-auto">
+        <div class="grid items-center grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
+            <div class="col-span-2 md:col-span-4 lg:col-span-6">Copyright 2024 Brand</div>
+            <nav class="col-span-3 md:col-span-4 lg:col-span-6" aria-labelledby="subfooter-links-3-sub">
+            <h3 class="sr-only" id="subfooter-links-3-sub">Get in touch</h3>
+            <ul class="flex flex-wrap items-center justify-end gap-2 lg:gap-4">
+                <li class="leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> T&C </a>
+                </li>
+                <li class="leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Privacy</a>
+                </li>
+                <li class="leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Cookies </a>
+                </li>
+            </ul>
+            </nav>
+        </div>
+        </div>
+    </div>
+    </footer>
+  
+  
+
+  <!-- JS files -->
+  <script src="category-api.js"></script>
+  <script src="create-product-card.js"></script>
+  <script src="filters.js"></script>
+</body>
+</html>

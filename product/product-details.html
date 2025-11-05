@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-50 text-gray-700">
+     <header>
+      <!--nav-->
+      <nav x-data="{ isOpen: false }" class="relative bg-white shadow dark:bg-gray-800">
+        <div class="container px-6 py-4 mx-auto flex items-center justify-between">
+          <!-- Logo -->
+          <a href="/" class="flex-shrink-0">
+            <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="Logo">
+          </a>
+
+          <!-- Desktop Menu (centered) -->
+          <div class="hidden md:flex flex-1 justify-center">
+            <div class="flex space-x-6">
+              <a class="text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="/">Home</a>
+              <a class="text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="/product/product.html">Shop</a>
+              <a class="text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">Contact</a>
+              <a class="text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">About</a>
+            </div>
+          </div>
+
+          <!-- Cart Icon (right) -->
+          <div class="hidden md:flex items-center">
+            <a href="#" class="relative text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
+            </a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="flex lg:hidden">
+            <button @click="isOpen = !isOpen" :aria-expanded="isOpen.toString()" aria-controls="mobile-menu" type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none">
+              <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+              </svg>
+              <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" x-cloak x-show="isOpen" class="md:hidden absolute inset-x-0 z-20 w-full px-6 py-4 bg-white dark:bg-gray-800 shadow">
+          <div class="flex flex-col space-y-2">
+            <a class="py-2 text-gray-700 transition-colors duration-200 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">Home</a>
+            <a class="py-2 text-gray-700 transition-colors duration-200 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">Shop</a>
+            <a class="py-2 text-gray-700 transition-colors duration-200 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">Contact</a>
+            <a class="py-2 text-gray-700 transition-colors duration-200 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400" href="#">About</a>
+            <a class="py-2 flex items-center justify-start text-gray-700 transition-colors duration-200 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" href="#">
+              <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Cart
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="mx-auto px-4 w-full max-w-7xl bg-white shadow-sm" id="product-container">
+      <p class="text-center py-10 text-gray-400">Loading product...</p>
+    </div>
+
+    <footer class="text-[#]">
+    <!-- Main footer -->
+    <div class="pt-16 pb-12 text-sm border-t border-slate-200 bg-slate-100">
+        <div class="container px-6 mx-auto">
+        <div class="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
+            <div class="col-span-4 md:col-span-8 lg:col-span-4" aria-labelledby="footer-header">
+            <a id="WindUI-5-logo" aria-label="WindUI logo" aria-current="page" class="flex items-center gap-2 mb-6 text-base font-medium leading-6 whitespace-nowrap text-slate-700 focus:outline-none" href="javascript:void(0)">
+               <img src="https://merakiui.com/images/full-logo.svg" alt="logo" width="100px">
+            </a>
+            <p>Expertly made, responsive, accessible components in React and HTML ready to be used on your website or app. Just copy and paste them on your Tailwind CSS project.</p>
+            </div>
+            <nav class="col-span-2 md:col-span-4 lg:col-span-2" aria-labelledby="footer-product-5-logo">
+            <h3 class="mb-6 text-base font-medium text-slate-700" id="footer-product-5-logo">Product</h3>
+            <ul>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Features </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Customers </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Why us? </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Pricing </a>
+                </li>
+            </ul>
+            </nav>
+            <nav class="col-span-2 md:col-span-4 lg:col-span-2" aria-labelledby="footer-docs-5-logo">
+            <h3 class="mb-6 text-base font-medium text-slate-700" id="footer-docs-5-logo">Docs & Help</h3>
+            <ul>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Documentation</a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Training </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> System status </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> FAQ's </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Help Center </a>
+                </li>
+            </ul>
+            </nav>
+            <nav class="col-span-2 md:col-span-4 lg:col-span-2" aria-labelledby="footer-about-5-logo">
+            <h3 class="mb-6 text-base font-medium text-slate-700" id="footer-about-5-logo">About us</h3>
+            <ul>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> About us </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Careers </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Leadership </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Blog</a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Events </a>
+                </li>
+            </ul>
+            </nav>
+            <nav class="col-span-2 md:col-span-4 lg:col-span-2" aria-labelledby="footer-get-in-touch-5-logo">
+            <h3 class="mb-6 text-base font-medium text-slate-700" id="footer-get-in-touch-5-logo">Get in touch</h3>
+            <ul>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Contact </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Support </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Partners </a>
+                </li>
+                <li class="mb-2 leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Join research </a>
+                </li>
+            </ul>
+            </nav>
+        </div>
+        </div>
+    </div>
+    <!-- Sub Footer -->
+    <div class="py-4 text-sm border-t border-slate-200 bg-slate-100">
+        <div class="container px-6 mx-auto">
+        <div class="grid items-center grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
+            <div class="col-span-2 md:col-span-4 lg:col-span-6">Copyright 2024 Brand</div>
+            <nav class="col-span-3 md:col-span-4 lg:col-span-6" aria-labelledby="subfooter-links-3-sub">
+            <h3 class="sr-only" id="subfooter-links-3-sub">Get in touch</h3>
+            <ul class="flex flex-wrap items-center justify-end gap-2 lg:gap-4">
+                <li class="leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> T&C </a>
+                </li>
+                <li class="leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Privacy</a>
+                </li>
+                <li class="leading-6">
+                <a href="javascript:void(0)" class="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"> Cookies </a>
+                </li>
+            </ul>
+            </nav>
+        </div>
+        </div>
+    </div>
+    </footer>
+
+    <script>
+      async function loadProduct() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        if (!id) {
+          document.getElementById("product-container").innerHTML =
+            '<p class="text-center text-red-500 py-10">No product ID provided in URL.</p>';
+          return;
+        }
+
+        try {
+          const res = await fetch(`https://dummyjson.com/products/${id}`);
+          const product = await res.json();
+
+          const html = `
+           <!-- Buttons Section -->
+              <div class="order-0 flex py-8 space-x-4 pb-4 sm:px-6">
+                <a href="/product/product.html?page=1" class="px-4 py-2 rounded-md bg-blue-500 text-white font-semibold hover:bg-blue-600">Products</a>
+                <a href="/" class="px-4 py-2 rounded-md bg-gray-500 text-white font-semibold hover:bg-gray-600">Home</a>
+              </div>
+          <div class="flex flex-col lg:flex-row">
+            <!-- Product Images -->
+            <div class="py-8 w-full lg:w-1/2 flex flex-col items-center">
+              <!-- Like Button -->
+              <span class="self-start ml-10">
+                <button class="text-gray-300 hover:text-red-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                    2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 
+                    4.5 2.09C13.09 3.81 14.76 3 
+                    16.5 3 19.58 3 22 5.42 22 8.5c0 
+                    3.78-3.4 6.86-8.55 11.54L12 
+                    21.35z"/>
+                  </svg>
+                </button>
+              </span>
+
+              <!-- Main Image -->
+              <div class="w-auto h-56 sm:h-72 lg:h-full max-h-96 overflow-hidden">
+                <img id="mainImage" src="${product.thumbnail}" alt="${product.title}" class="object-contain w-full h-full transition-all duration-300" />
+              </div>
+
+              <!-- Gallery -->
+              <div class="mt-6 mx-auto">
+                <ul id="gallery" class="grid grid-flow-col auto-cols-fr gap-4">
+                  ${product.images
+                    .map(
+                      (img, i) => `
+                        <li class="col-span-1 p-1 w-16 rounded border-2 ${i === 0 ? "border-yellow-600" : "border-transparent"} cursor-pointer">
+                          <img src="${img}" alt="${product.title}" class="object-contain" />
+                        </li>`
+                    )
+                    .join("")}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="lg:py-8 w-full lg:w-1/2 flex flex-col lg:border-l-2 border-gray-200">
+              
+             
+
+              <!-- Description and Info -->
+              <div class="order-1 pb-5 sm:px-6 lg:border-b-2 border-gray-200">
+                <h1 class="text-3xl lg:text-4xl text-gray-700 font-light tracking-wide">${product.title}</h1>
+                <p class="mt-4 text-base text-gray-500">${product.description}</p>
+
+                <ul class="my-5 flex flex-col space-y-2 text-gray-500">
+                  <li><span class="font-semibold">Category:</span> ${product.category}</li>
+                  <li><span class="font-semibold">Brand:</span> ${product.brand}</li>
+                  <li><span class="font-semibold">Stock:</span> ${product.stock}</li>
+                  <li><span class="font-semibold">Warranty:</span> ${product.warrantyInformation || "N/A"}</li>
+                  <li><span class="font-semibold">Shipping:</span> ${product.shippingInformation}</li>
+                  <li><span class="font-semibold">Return Policy:</span> ${product.returnPolicy}</li>
+                </ul>
+              </div>
+
+              <!-- Actions and Price -->
+              <div class="order-2 pt-8 sm:px-6 flex flex-wrap justify-around items-center border-b-2 lg:border-none border-gray-200">
+                <span class="m-2.5 text-4xl text-gray-700 font-extrabold">$${product.price}</span>
+
+                <button class="m-2.5 py-2 px-6 inline-flex items-center rounded-md bg-yellow-500 text-white font-semibold uppercase hover:bg-yellow-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="mr-2 w-6 h-6" viewBox="0 0 24 24">
+                    <path d="M7 18c-1.104 0-1.99.896-1.99 2S5.896 22 7 22s2-.896 
+                    2-2-.896-2-2-2zm0 2zm10-2c-1.104 
+                    0-1.99.896-1.99 2S15.896 22 17 
+                    22s2-.896 2-2-.896-2-2-2zm-12-3h14.334l1.42-8H6.21l-.94-4H2v2h2l3.6 
+                    16h12v-2H7.334l-.334-2z"/>
+                  </svg>
+                  Add to Cart
+                </button>
+
+                <div class="m-2.5 flex items-center">
+                  <div class="flex space-x-1 text-yellow-500">
+                    ${'<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>'.repeat(Math.round(product.rating))}
+                  </div>
+                  <span class="ml-2 text-sm text-sky-400 font-medium">${product.rating} / 5</span>
+                </div>
+              </div>
+
+              <!-- Reviews -->
+              <div id="reviews" class="order-3 p-6 border-t border-gray-200">
+                <h2 class="text-2xl font-semibold mb-4">Reviews</h2>
+                ${
+                  product.reviews?.length
+                    ? product.reviews
+                        .map(
+                          (r) => `
+                          <div class="mb-4 border-b pb-3">
+                            <div class="flex items-center justify-between">
+                              <p class="font-semibold text-gray-700">${r.reviewerName}</p>
+                              <span class="text-yellow-500 text-sm">${"★".repeat(r.rating)}</span>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-1">${r.comment}</p>
+                          </div>`
+                        )
+                        .join("")
+                    : "<p class='text-gray-500'>No reviews available.</p>"
+                }
+              </div>
+            </div>
+          </div>
+          `;
+
+          document.getElementById("product-container").innerHTML = html;
+
+          // تبديل الصور عند الضغط
+          const mainImage = document.getElementById("mainImage");
+          const galleryItems = document.querySelectorAll("#gallery li");
+          galleryItems.forEach((item) => {
+            item.addEventListener("click", () => {
+              galleryItems.forEach((i) => i.classList.remove("border-yellow-600"));
+              item.classList.add("border-yellow-600");
+              const newSrc = item.querySelector("img").src;
+              mainImage.classList.add("opacity-0");
+              setTimeout(() => {
+                mainImage.src = newSrc;
+                mainImage.classList.remove("opacity-0");
+              }, 200);
+            });
+          });
+        } catch (err) {
+          console.error(err);
+          document.getElementById("product-container").innerHTML =
+            '<p class="text-center text-red-500 py-10">Failed to load product details.</p>';
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", loadProduct);
+    </script>
+  </body>
+</html>
