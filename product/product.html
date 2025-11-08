@@ -30,7 +30,7 @@
 
           <!-- Cart Icon (right) -->
           <div class="hidden md:flex items-center">
-            <a href="#" class="relative text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300">
+            <a href="/cart/cart.html" class="relative text-gray-700 transition-colors duration-300 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -79,7 +79,7 @@
       </div>
 
       <div class="mt-4 lg:mt-8 lg:grid lg:grid-cols-4 lg:items-start lg:gap-8">
-        <!-- 🔹 Sidebar Filters -->
+        <!-- Sidebar Filters -->
         <div class="hidden space-y-4 lg:block">
           <!-- Sort -->
           <div>
@@ -160,6 +160,58 @@
 
             </div>
           </div>
+        </div>
+
+         <!--  Mobile Filters Button -->
+        <div class="block lg:hidden mb-6">
+          <details class="rounded-lg border border-gray-300 bg-white">
+            <summary class="flex items-center justify-between gap-2 px-4 py-3 text-gray-900 cursor-pointer">
+              <span class="text-sm font-medium">Filters & Sorting</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                   viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                   class="w-4 h-4 transition group-open:-rotate-180">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+              </svg>
+            </summary>
+
+            <div class="border-t border-gray-200 bg-white p-4 space-y-4">
+              <div>
+                <label class="block text-xs font-medium text-gray-700">Sort By</label>
+                <select class="mt-1 rounded border-gray-300 text-sm w-full">
+                  <option>Sort By</option>
+                  <option value="title, ASC">Title, ASC</option>
+                  <option value="title, DESC">Title, DESC</option>
+                  <option value="price, ASC">Price, ASC</option>
+                  <option value="price, DESC">Price, DESC</option>
+                </select>
+              </div>
+
+              <details open class="border border-gray-200 rounded">
+                <summary class="p-3 cursor-pointer text-sm font-medium text-gray-900">Category</summary>
+                <ul id="categories-list-mobile" class="p-3 border-t border-gray-100"></ul>
+              </details>
+
+              <details open class="border border-gray-200 rounded">
+                <summary class="p-3 cursor-pointer text-sm font-medium text-gray-900">Price</summary>
+                <div class="p-3 border-t border-gray-100 flex gap-2">
+                  <input type="number" placeholder="From" class="w-full rounded border-gray-300 text-sm">
+                  <input type="number" placeholder="To" class="w-full rounded border-gray-300 text-sm">
+                </div>
+              </details>
+
+              <details open class="border border-gray-200 rounded">
+                <summary class="p-3 cursor-pointer text-sm font-medium text-gray-900">Ratings</summary>
+                <div class="p-3 border-t border-gray-100 text-sm space-y-1">
+                  <label><input type="radio" name="rating-m" value="1"> 1 & up</label><br>
+                  <label><input type="radio" name="rating-m" value="2"> 2 & up</label><br>
+                  <label><input type="radio" name="rating-m" value="3"> 3 & up</label><br>
+                  <label><input type="radio" name="rating-m" value="4"> 4 & up</label><br>
+                  <label><input type="radio" name="rating-m" value="5"> 5 only</label>
+                </div>
+              </details>
+            </div>
+          </details>
         </div>
 
         <!-- 🔹 Products -->
@@ -285,6 +337,8 @@
   
 
   <!-- JS files -->
+  <script src="/cart/cart.js"></script>
+  <script src="/cart/create-cart-product.js"></script>
   <script src="category-api.js"></script>
   <script src="create-product-card.js"></script>
   <script src="filters.js"></script>

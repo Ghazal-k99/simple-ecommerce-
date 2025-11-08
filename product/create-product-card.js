@@ -35,11 +35,17 @@ function createProductCard(product) {
           <p class="text-yellow-500 mt-1 text-sm">${stars}</p>
         </div>
         <button type="button" 
-                class="mt-4 block w-full rounded-full bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105">
+                class="add-to-cart  mt-4 block w-full rounded-full bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105">
           Add To Cart
         </button>
       </div>
     </a>
   `;
+
+   
+  li.querySelector(".add-to-cart").addEventListener("click", (e) => {
+    e.preventDefault(); 
+    addToCart(product);
+  });
   return li;
 }

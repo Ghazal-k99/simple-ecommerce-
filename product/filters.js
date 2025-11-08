@@ -9,11 +9,11 @@ paginationContainer.className = "flex justify-center mt-8 space-x-2";
 paginationContainer.setAttribute("aria-label", "Pagination");
 if (cardList) cardList.insertAdjacentElement("afterend", paginationContainer);
 
-// ✅ تحميل كل المنتجات عند بداية الصفحة
+
 async function loadAllProducts() {
   try {
     if (cardList) {
-      // 🦴 عرض سكلتون أثناء التحميل
+     
       const skeletonCard = () => `
         <li class="animate-pulse">
           <div class="group relative block overflow-hidden rounded-lg shadow-lg bg-white">
@@ -52,7 +52,7 @@ async function loadAllProducts() {
   }
 }
 
-// ✅ عرض المنتجات بحسب الصفحة الحالية
+
 function renderProducts() {
   if (!cardList) return;
   cardList.innerHTML = "";
@@ -74,7 +74,7 @@ function renderProducts() {
   });
 }
 
-// ✅ إنشاء أزرار الباجينيشن
+
 function renderPagination() {
   if (!paginationContainer) return;
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
@@ -129,7 +129,7 @@ function renderPagination() {
   paginationContainer.appendChild(nextBtn);
 }
 
-// ✅ تحديث الفلاتر في URL
+
 function updateURLParams() {
   const params = new URLSearchParams();
 
@@ -155,7 +155,7 @@ function updateURLParams() {
   window.history.replaceState({}, "", newUrl);
 }
 
-// ✅ تطبيق الفلاتر
+
 async function applyFilters() {
   let filtered = [];
 
@@ -202,7 +202,7 @@ async function applyFilters() {
   updateURLParams();
 }
 
-// ✅ عرض أحدث المنتجات في New Arrivals
+
 async function renderNewArrivals() {
   const newArrivalSection = document.getElementById("new-arrival-product");
   if (!newArrivalSection) return;
@@ -225,7 +225,7 @@ async function renderNewArrivals() {
   }
 }
 
-// ✅ الاستماع لتغيير الفلاتر
+
 document.addEventListener("change", (e) => {
   if (
     e.target.matches("#SortBy") ||
@@ -238,7 +238,7 @@ document.addEventListener("change", (e) => {
   }
 });
 
-// ✅ تحميل الصفحة وقراءة الفلاتر من الرابط
+
 document.addEventListener("DOMContentLoaded", async () => {
   await loadAllProducts();
 

@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const newArrivalSection = document.getElementById("new-arrival-product");
 
   if (!newArrivalSection) {
-    console.error("❌ لم يتم العثور على القسم #new-arrival-product في الصفحة!");
+    console.error("The section #new-arrival-product was not found on the page!");
     return;
   }
 
-  // 🦴 سكلتون مطابق لتصميم الكارد الحقيقي
+  
   const skeletonCard = () => `
     <div class="group relative block overflow-hidden rounded-lg shadow-lg bg-white animate-pulse">
       <div class="h-64 w-full bg-gray-300"></div>
@@ -23,28 +23,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     </div>
   `;
 
-  // 🩶 تعبئة السكشن بـ 8 سكلتونات بنفس تصميم الشبكة الأصلية
-  newArrivalSection.innerHTML = Array(8).fill(skeletonCard()).join("");
+ 
+  newArrivalSection.innerHTML = Array(4).fill(skeletonCard()).join("");
 
   try {
-    // جلب المنتجات
+    
     const res = await fetch("https://dummyjson.com/products?limit=100");
     const data = await res.json();
-    const firstProducts = data.products.slice(0, 8); // أول 8 منتجات
+    const firstProducts = data.products.slice(0, 4); 
 
-    newArrivalSection.innerHTML = ""; // تنظيف السكلتون
+    newArrivalSection.innerHTML = ""; 
 
-    // ✅ عرض الكروت الفعلية
+    
     firstProducts.forEach((product) => {
       if (typeof createProductCard === "function") {
         const card = createProductCard(product);
         newArrivalSection.appendChild(card);
       } else {
-        console.error("❌ createProductCard غير معرف!");
+        console.error("there is an error");
       }
     });
   } catch (err) {
-    console.error("حدث خطأ أثناء تحميل المنتجات:", err);
+    console.error("An error occurred while loading the products:", err);
     newArrivalSection.innerHTML =
       '<p class="text-center text-red-500 col-span-full">فشل تحميل المنتجات.</p>';
   }
